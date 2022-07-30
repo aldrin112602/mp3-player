@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./main.js" defer></script>
+</head>
+<body>
+   <div id="container">
+      <canvas id="canvas"></canvas>
+      <input type="file" multiple="multiple" id="file" accept="audio/*">
+      
+      <div class="top">
+          <i class="fas fa-arrow-left"></i>
+          <i class="fas fa-stream"></i>
+      </div>
+      <div class="middle">
+        <input id="range-bar" max="0" value="0" type="range" min="0">
+        <small>
+           <span id="currentDuration">0:00</span>
+           <span id="totalDuration">0:00</span>
+        </small>
+        <h3>No song Selected..</h3>
+      </div>
+      
+      <div class="keys">
+        <i id="leftArrow" class="fa fa-angle-double-left"></i>
+        <span class="circle">
+          <i class="fa fa-play" id="playBtn"></i>
+        </span>
+        <i id="rightArrow" class="fa fa-angle-double-right"></i>
+        
+      </div>
+      
+      <ol class="list">
+         <span id="fa-plus"><i class="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Playlist</span><br><br>
+      </ol>
+   </div>
+</body>
+</html>
