@@ -9,8 +9,6 @@ $(document).ready(() => {
   $('#fa-plus').on('click', () => {
        file.click()
   })
-  
-  
   const canvas = document.getElementById('canvas')
   canvas.height = window.innerHeight
   canvas.width = window.innerWidth
@@ -157,7 +155,7 @@ $(document).ready(() => {
     let analyser = audioCtx.createAnalyser()
     audioSource.connect(analyser)
     analyser.connect(audioCtx.destination)
-    analyser.fftSize = 64 * 8
+    analyser.fftSize = 64 * 4
     const bufferLength = analyser.frequencyBinCount
     const dataArray = new Uint8Array(bufferLength)
     const barWidth = canvas.width / bufferLength
@@ -186,7 +184,9 @@ $(document).ready(() => {
   
   $('#playBtn').on('click', () => {
     audioPlay()
-    document.documentElement.requestFullscreen()
+    if(!document.fullscreenElement) {
+     document.documentElement.requestFullscreen() 
+    }
   })
   
   $('#leftArrow').on('click', () => {
@@ -205,4 +205,16 @@ $(document).ready(() => {
     if(i < 0) i = file.files.length - 1
     handleAuido(i)
   }
+  $('.fa-arrow-left').on('click', () => {
+    if(document.fullscreenElement) {
+      document.exitFullscreen()
+    }
+  })
+  $('canvas').on('dblclick', () => {
+    var link = document.getElementById('link')
+    link.setAttribute('download', 'canvas-screenShot.png')
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"))
+    link.click();
+    
+  })
 })
