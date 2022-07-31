@@ -211,10 +211,13 @@ $(document).ready(() => {
     }
   })
   $('canvas').on('dblclick', () => {
-    var link = document.getElementById('link')
-    link.setAttribute('download', 'canvas-screenShot.png')
-    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"))
-    link.click();
-    
+    if('print' in window) {
+      window.print()
+    } else {
+      var link = document.getElementById('link')
+      link.setAttribute('download', 'canvas-screenShot.png')
+      link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"))
+      link.click();
+    }
   })
 })
