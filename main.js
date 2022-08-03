@@ -1,11 +1,5 @@
-document.addEventListener('readystatechange', e => {
-  if(e.target.readyState === 'loading' || e.target.readyState === 'interactive') {
-    document.querySelector('.loadingState').style.display = 'block'
-  } else if(e.target.readyState === 'complete') {
-    document.querySelector('.loadingState').style.display = 'none'
-  }
-})
 $(document).ready(() => {
+  let audio = new Audio(), i = 0, playing = false
   const file = document.getElementById('file')
   $('.fa-stream').on('click', () => {
        $('.list').toggleClass('active')
@@ -94,15 +88,14 @@ $(document).ready(() => {
   $('#file').on('change', () => {
     handleList()
     let li = document.querySelectorAll('li')
-    li.forEach((e, i) => {
+    li.forEach((e, index) => {
       e.onclick = () => {
-        handleAuido(i)
+        handleAuido(index)
+        i = index
       }
     })
   })
   
-  let audio = new Audio(), i = 0, playing = false
- 
   function handleAuido(index) {
     let reader = new FileReader()
     reader.onload = e => {
